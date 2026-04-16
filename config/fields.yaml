@@ -1,0 +1,44 @@
+# fields.yaml — Excel column name → Python field name mapping
+#
+# Mirrors the exact header names from pulse_data.xlsx (OneDrive).
+# If Power Automate renames a column, update here — not in code.
+#
+# Structure: one section per Excel sheet / form source.
+
+weekly_pulse:
+  sheet: "WeeklyPulse"
+  columns:
+    timestamp:       "Timestamp"
+    consultant_name: "ConsultantName"
+    workload:        "Workload"
+    blocker_yn:      "BlockerYN"      # "Ja" / "Nein" — mapped to bool in loader
+    blocker_text:    "BlockerText"
+    call_needed:     "CallNeeded"     # "Ja" / "Nein" — mapped to bool in loader
+
+  # Values Power Automate writes for yes/no questions
+  bool_true:  "Yes"
+  bool_false: "No"
+
+monthly_consultant:
+  sheet: "MonthlyConsultant"
+  columns:
+    timestamp:       "Timestamp"
+    consultant_name: "ConsultantName"
+    workload:        "Workload"       # monthly retrospective average
+    engagement:      "Engagement"
+    motivation:      "Motivation"
+    delivery:        "Delivery"
+    skill_alignment: "SkillAlignment"
+    task_challenge:  "TaskChallenge"
+    manager_needs:   "ManagerNeeds"
+
+monthly_lead:
+  sheet: "MonthlyLead"
+  columns:
+    timestamp:       "Timestamp"
+    consultant_name: "ConsultantName"
+    reliability:     "Reliability"
+    proactivity:     "Proactivity"
+    skill_fit:       "SkillFit"
+    project_status:  "ProjectStatus"
+    risks:           "Risks"

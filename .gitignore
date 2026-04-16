@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+data/output/
+config/consultant_map.yaml
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+CLAUDE.md

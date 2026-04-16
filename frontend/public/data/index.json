@@ -1,0 +1,13 @@
+{
+  "latest_weekly": "pulse_2026-W16.json",
+  "latest_monthly": "pulse_2026-04.json",
+  "weekly": [
+    "pulse_2026-W16.json",
+    "pulse_2026-W15.json",
+    "pulse_2026-W12.json"
+  ],
+  "monthly": [
+    "pulse_2026-04.json",
+    "pulse_2026-03.json"
+  ]
+}

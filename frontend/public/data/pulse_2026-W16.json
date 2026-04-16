@@ -1,0 +1,182 @@
+{
+  "week": "2026-W16",
+  "generated_at": "2026-04-16T08:35:50.234425Z",
+  "aggregated": {
+    "avg_workload": 3.35,
+    "active_blockers": 2,
+    "calls_needed": 4,
+    "rag_red": 8,
+    "rag_amber": 4,
+    "rag_green": 5,
+    "response_count": 17,
+    "expected_count": 17
+  },
+  "name_map": {
+    "C01": "Anna Becker",
+    "C02": "Ben Müller",
+    "C03": "Clara Fischer",
+    "C04": "David Wagner",
+    "C05": "Eva Schulz",
+    "C06": "Felix Bauer",
+    "C07": "Greta Koch",
+    "C08": "Hans Richter",
+    "C09": "Iris Klein",
+    "C10": "Jan Wolf",
+    "C11": "Karin Braun",
+    "C12": "Lars Zimmermann",
+    "C13": "Maria Hartmann",
+    "C14": "Nils Krause",
+    "C15": "Olga Fuchs",
+    "C16": "Peter Lange",
+    "C17": "Quin Hoffmann"
+  },
+  "blockers": [
+    "C08",
+    "C05"
+  ],
+  "calls_requested": [
+    "C15",
+    "C13",
+    "C07",
+    "C05"
+  ],
+  "missing": [],
+  "consultants": [
+    {
+      "id": "C01",
+      "name": "Anna Becker",
+      "workload": 1,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "green"
+    },
+    {
+      "id": "C10",
+      "name": "Jan Wolf",
+      "workload": 1,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "green"
+    },
+    {
+      "id": "C16",
+      "name": "Peter Lange",
+      "workload": 3,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "green"
+    },
+    {
+      "id": "C15",
+      "name": "Olga Fuchs",
+      "workload": 4,
+      "blocker": false,
+      "call_needed": true,
+      "rag": "amber"
+    },
+    {
+      "id": "C14",
+      "name": "Nils Krause",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C13",
+      "name": "Maria Hartmann",
+      "workload": 2,
+      "blocker": false,
+      "call_needed": true,
+      "rag": "amber"
+    },
+    {
+      "id": "C12",
+      "name": "Lars Zimmermann",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C11",
+      "name": "Karin Braun",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C09",
+      "name": "Iris Klein",
+      "workload": 4,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "amber"
+    },
+    {
+      "id": "C02",
+      "name": "Ben Müller",
+      "workload": 4,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "amber"
+    },
+    {
+      "id": "C08",
+      "name": "Hans Richter",
+      "workload": 1,
+      "blocker": true,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C07",
+      "name": "Greta Koch",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": true,
+      "rag": "red"
+    },
+    {
+      "id": "C06",
+      "name": "Felix Bauer",
+      "workload": 2,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "green"
+    },
+    {
+      "id": "C05",
+      "name": "Eva Schulz",
+      "workload": 2,
+      "blocker": true,
+      "call_needed": true,
+      "rag": "red"
+    },
+    {
+      "id": "C04",
+      "name": "David Wagner",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C03",
+      "name": "Clara Fischer",
+      "workload": 5,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C17",
+      "name": "Quin Hoffmann",
+      "workload": 3,
+      "blocker": false,
+      "call_needed": false,
+      "rag": "green"
+    }
+  ]
+}

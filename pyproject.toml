@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend/src"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["src/tests/*", "src/generate_synthetic.py"]

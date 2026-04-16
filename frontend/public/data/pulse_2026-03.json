@@ -1,0 +1,388 @@
+{
+  "month": "2026-03",
+  "generated_at": "2026-04-16T08:34:26.934623Z",
+  "aggregated": {
+    "avg_workload": 3.76,
+    "avg_engagement": 3.35,
+    "avg_motivation": 3.65,
+    "avg_delivery": 3.35,
+    "avg_skill_alignment": 2.82,
+    "avg_task_challenge": 3.53,
+    "avg_reliability": 3.47,
+    "avg_proactivity": 3.41,
+    "avg_skill_fit": 3.35,
+    "avg_project_status": 3.53,
+    "lead_response_count": 17,
+    "rag_red": 12,
+    "rag_amber": 4,
+    "rag_green": 1,
+    "response_count": 17,
+    "expected_count": 17
+  },
+  "name_map": {
+    "C01": "Anna Becker",
+    "C02": "Ben Müller",
+    "C03": "Clara Fischer",
+    "C04": "David Wagner",
+    "C05": "Eva Schulz",
+    "C06": "Felix Bauer",
+    "C07": "Greta Koch",
+    "C08": "Hans Richter",
+    "C09": "Iris Klein",
+    "C10": "Jan Wolf",
+    "C11": "Karin Braun",
+    "C12": "Lars Zimmermann",
+    "C13": "Maria Hartmann",
+    "C14": "Nils Krause",
+    "C15": "Olga Fuchs",
+    "C16": "Peter Lange",
+    "C17": "Quin Hoffmann"
+  },
+  "risks": [],
+  "missing_consultants": [],
+  "missing_leads": [],
+  "consultants": [
+    {
+      "id": "C01",
+      "name": "Anna Becker",
+      "workload": 4,
+      "engagement": 5,
+      "motivation": 4,
+      "delivery": 5,
+      "skill_alignment": 2,
+      "task_challenge": 4,
+      "rag": "red"
+    },
+    {
+      "id": "C10",
+      "name": "Jan Wolf",
+      "workload": 3,
+      "engagement": 2,
+      "motivation": 2,
+      "delivery": 5,
+      "skill_alignment": 5,
+      "task_challenge": 2,
+      "rag": "red"
+    },
+    {
+      "id": "C16",
+      "name": "Peter Lange",
+      "workload": 5,
+      "engagement": 2,
+      "motivation": 5,
+      "delivery": 2,
+      "skill_alignment": 5,
+      "task_challenge": 4,
+      "rag": "red"
+    },
+    {
+      "id": "C15",
+      "name": "Olga Fuchs",
+      "workload": 3,
+      "engagement": 5,
+      "motivation": 5,
+      "delivery": 4,
+      "skill_alignment": 1,
+      "task_challenge": 4,
+      "rag": "amber"
+    },
+    {
+      "id": "C14",
+      "name": "Nils Krause",
+      "workload": 3,
+      "engagement": 3,
+      "motivation": 3,
+      "delivery": 2,
+      "skill_alignment": 1,
+      "task_challenge": 2,
+      "rag": "amber"
+    },
+    {
+      "id": "C13",
+      "name": "Maria Hartmann",
+      "workload": 4,
+      "engagement": 5,
+      "motivation": 4,
+      "delivery": 4,
+      "skill_alignment": 2,
+      "task_challenge": 5,
+      "rag": "amber"
+    },
+    {
+      "id": "C12",
+      "name": "Lars Zimmermann",
+      "workload": 2,
+      "engagement": 5,
+      "motivation": 4,
+      "delivery": 2,
+      "skill_alignment": 3,
+      "task_challenge": 4,
+      "rag": "green"
+    },
+    {
+      "id": "C11",
+      "name": "Karin Braun",
+      "workload": 3,
+      "engagement": 2,
+      "motivation": 4,
+      "delivery": 5,
+      "skill_alignment": 2,
+      "task_challenge": 4,
+      "rag": "red"
+    },
+    {
+      "id": "C09",
+      "name": "Iris Klein",
+      "workload": 5,
+      "engagement": 5,
+      "motivation": 3,
+      "delivery": 3,
+      "skill_alignment": 5,
+      "task_challenge": 5,
+      "rag": "red"
+    },
+    {
+      "id": "C02",
+      "name": "Ben Müller",
+      "workload": 5,
+      "engagement": 2,
+      "motivation": 5,
+      "delivery": 3,
+      "skill_alignment": 4,
+      "task_challenge": 2,
+      "rag": "red"
+    },
+    {
+      "id": "C08",
+      "name": "Hans Richter",
+      "workload": 2,
+      "engagement": 3,
+      "motivation": 3,
+      "delivery": 5,
+      "skill_alignment": 1,
+      "task_challenge": 3,
+      "rag": "amber"
+    },
+    {
+      "id": "C07",
+      "name": "Greta Koch",
+      "workload": 5,
+      "engagement": 3,
+      "motivation": 2,
+      "delivery": 3,
+      "skill_alignment": 4,
+      "task_challenge": 2,
+      "rag": "red"
+    },
+    {
+      "id": "C06",
+      "name": "Felix Bauer",
+      "workload": 3,
+      "engagement": 2,
+      "motivation": 5,
+      "delivery": 2,
+      "skill_alignment": 3,
+      "task_challenge": 4,
+      "rag": "red"
+    },
+    {
+      "id": "C05",
+      "name": "Eva Schulz",
+      "workload": 5,
+      "engagement": 2,
+      "motivation": 4,
+      "delivery": 4,
+      "skill_alignment": 2,
+      "task_challenge": 4,
+      "rag": "red"
+    },
+    {
+      "id": "C04",
+      "name": "David Wagner",
+      "workload": 5,
+      "engagement": 2,
+      "motivation": 2,
+      "delivery": 2,
+      "skill_alignment": 3,
+      "task_challenge": 5,
+      "rag": "red"
+    },
+    {
+      "id": "C03",
+      "name": "Clara Fischer",
+      "workload": 2,
+      "engagement": 4,
+      "motivation": 5,
+      "delivery": 4,
+      "skill_alignment": 4,
+      "task_challenge": 3,
+      "rag": "red"
+    },
+    {
+      "id": "C17",
+      "name": "Quin Hoffmann",
+      "workload": 5,
+      "engagement": 5,
+      "motivation": 2,
+      "delivery": 2,
+      "skill_alignment": 1,
+      "task_challenge": 3,
+      "rag": "red"
+    }
+  ],
+  "lead_reports": [
+    {
+      "id": "C01",
+      "name": "Anna Becker",
+      "reliability": 4,
+      "proactivity": 4,
+      "skill_fit": 2,
+      "project_status": 2,
+      "risks_present": false
+    },
+    {
+      "id": "C10",
+      "name": "Jan Wolf",
+      "reliability": 4,
+      "proactivity": 2,
+      "skill_fit": 2,
+      "project_status": 5,
+      "risks_present": false
+    },
+    {
+      "id": "C16",
+      "name": "Peter Lange",
+      "reliability": 2,
+      "proactivity": 2,
+      "skill_fit": 5,
+      "project_status": 3,
+      "risks_present": false
+    },
+    {
+      "id": "C15",
+      "name": "Olga Fuchs",
+      "reliability": 3,
+      "proactivity": 2,
+      "skill_fit": 3,
+      "project_status": 3,
+      "risks_present": false
+    },
+    {
+      "id": "C14",
+      "name": "Nils Krause",
+      "reliability": 3,
+      "proactivity": 4,
+      "skill_fit": 4,
+      "project_status": 4,
+      "risks_present": false
+    },
+    {
+      "id": "C13",
+      "name": "Maria Hartmann",
+      "reliability": 3,
+      "proactivity": 5,
+      "skill_fit": 5,
+      "project_status": 4,
+      "risks_present": false
+    },
+    {
+      "id": "C12",
+      "name": "Lars Zimmermann",
+      "reliability": 2,
+      "proactivity": 5,
+      "skill_fit": 2,
+      "project_status": 5,
+      "risks_present": false
+    },
+    {
+      "id": "C11",
+      "name": "Karin Braun",
+      "reliability": 4,
+      "proactivity": 2,
+      "skill_fit": 3,
+      "project_status": 4,
+      "risks_present": false
+    },
+    {
+      "id": "C09",
+      "name": "Iris Klein",
+      "reliability": 4,
+      "proactivity": 3,
+      "skill_fit": 5,
+      "project_status": 2,
+      "risks_present": false
+    },
+    {
+      "id": "C02",
+      "name": "Ben Müller",
+      "reliability": 3,
+      "proactivity": 2,
+      "skill_fit": 3,
+      "project_status": 3,
+      "risks_present": false
+    },
+    {
+      "id": "C08",
+      "name": "Hans Richter",
+      "reliability": 3,
+      "proactivity": 3,
+      "skill_fit": 3,
+      "project_status": 4,
+      "risks_present": false
+    },
+    {
+      "id": "C07",
+      "name": "Greta Koch",
+      "reliability": 3,
+      "proactivity": 5,
+      "skill_fit": 5,
+      "project_status": 5,
+      "risks_present": false
+    },
+    {
+      "id": "C06",
+      "name": "Felix Bauer",
+      "reliability": 4,
+      "proactivity": 3,
+      "skill_fit": 3,
+      "project_status": 4,
+      "risks_present": false
+    },
+    {
+      "id": "C05",
+      "name": "Eva Schulz",
+      "reliability": 5,
+      "proactivity": 5,
+      "skill_fit": 3,
+      "project_status": 2,
+      "risks_present": false
+    },
+    {
+      "id": "C04",
+      "name": "David Wagner",
+      "reliability": 5,
+      "proactivity": 5,
+      "skill_fit": 5,
+      "project_status": 3,
+      "risks_present": false
+    },
+    {
+      "id": "C03",
+      "name": "Clara Fischer",
+      "reliability": 4,
+      "proactivity": 2,
+      "skill_fit": 2,
+      "project_status": 2,
+      "risks_present": false
+    },
+    {
+      "id": "C17",
+      "name": "Quin Hoffmann",
+      "reliability": 3,
+      "proactivity": 4,
+      "skill_fit": 2,
+      "project_status": 5,
+      "risks_present": false
+    }
+  ]
+}

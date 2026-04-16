@@ -1,0 +1,28 @@
+# RAG status rules — evaluated red → amber → green, first match wins.
+#
+# Each rule: {field, condition, value}
+# Conditions: eq | gte | lte
+# Weekly fields:  blocker (bool), workload (1-5), call_needed (bool)
+# Monthly fields: workload, engagement, motivation (1-5 each),
+#                 project_status (1-5, from lead), risks_present (bool, from lead)
+
+weekly:
+  red:
+    - {field: blocker,     condition: eq,  value: true}
+    - {field: workload,    condition: gte, value: 5}
+  amber:
+    - {field: workload,    condition: gte, value: 4}
+    - {field: call_needed, condition: eq,  value: true}
+
+monthly:
+  red:
+    - {field: project_status, condition: lte, value: 2}
+    - {field: workload,       condition: gte, value: 5}
+    - {field: engagement,     condition: lte, value: 2}
+    - {field: motivation,     condition: lte, value: 2}
+  amber:
+    - {field: project_status, condition: lte, value: 3}
+    - {field: risks_present,  condition: eq,  value: true}
+    - {field: workload,       condition: gte, value: 4}
+    - {field: engagement,     condition: lte, value: 3}
+    - {field: motivation,     condition: lte, value: 3}

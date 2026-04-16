@@ -1,0 +1,111 @@
+# consultant_map.yaml — Synthetic data only. Real file is gitignored.
+#
+# PII lives here: full names, emails, aliases.
+# Python anonymizes to IDs (C01–C17) — names never appear in JSON output.
+#
+# aliases: all M365 display name variants that may appear in Microsoft Forms
+#          (e.g., different tenant UPN formats, "Lastname, Firstname" variants)
+# email:   M365 UPN — used as fallback lookup when Forms submits email instead of name
+
+consultants:
+  - id: C01
+    name: "Anna Becker"
+    email: "anna.becker@example.com"
+    aliases:
+      - "Becker, Anna"
+
+  - id: C02
+    name: "Ben Müller"
+    email: "ben.mueller@example.com"
+    aliases:
+      - "Müller, Ben"
+
+  - id: C03
+    name: "Clara Fischer"
+    email: "clara.fischer@example.com"
+    aliases:
+      - "Fischer, Clara"
+
+  - id: C04
+    name: "David Wagner"
+    email: "david.wagner@example.com"
+    aliases:
+      - "Wagner, David"
+
+  - id: C05
+    name: "Eva Schulz"
+    email: "eva.schulz@example.com"
+    aliases:
+      - "Schulz, Eva"
+
+  - id: C06
+    name: "Felix Bauer"
+    email: "felix.bauer@example.com"
+    aliases:
+      - "Bauer, Felix"
+
+  - id: C07
+    name: "Greta Koch"
+    email: "greta.koch@example.com"
+    aliases:
+      - "Koch, Greta"
+
+  - id: C08
+    name: "Hans Richter"
+    email: "hans.richter@example.com"
+    aliases:
+      - "Richter, Hans"
+
+  - id: C09
+    name: "Iris Klein"
+    email: "iris.klein@example.com"
+    aliases:
+      - "Klein, Iris"
+
+  - id: C10
+    name: "Jan Wolf"
+    email: "jan.wolf@example.com"
+    aliases:
+      - "Wolf, Jan"
+
+  - id: C11
+    name: "Karin Braun"
+    email: "karin.braun@example.com"
+    aliases:
+      - "Braun, Karin"
+
+  - id: C12
+    name: "Lars Zimmermann"
+    email: "lars.zimmermann@example.com"
+    aliases:
+      - "Zimmermann, Lars"
+
+  - id: C13
+    name: "Maria Hartmann"
+    email: "maria.hartmann@example.com"
+    aliases:
+      - "Hartmann, Maria"
+
+  - id: C14
+    name: "Nils Krause"
+    email: "nils.krause@example.com"
+    aliases:
+      - "Krause, Nils"
+
+  - id: C15
+    name: "Olga Fuchs"
+    email: "olga.fuchs@example.com"
+    aliases:
+      - "Fuchs, Olga"
+
+  - id: C16
+    name: "Peter Lange"
+    email: "peter.lange@example.com"
+    aliases:
+      - "Lange, Peter"
+
+  - id: C17
+    name: "Quin Hoffmann"
+    email: "quin.hoffmann@example.com"
+    aliases:
+      - "Hoffmann, Quin"
