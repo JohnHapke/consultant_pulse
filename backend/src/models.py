@@ -32,8 +32,13 @@ class RawWeeklyEntry(BaseModel):
     consultant_name: str = Field(..., description="Full name from Forms — removed after ID mapping")
     workload: Scale5
     blocker_yn: bool
-    blocker_text: str = Field(default="", description="Free-text — personal data stripped before output")
+    blocker_text: str = Field(default="", description="Free-text — whitespace stripped at validation")
     call_needed: bool
+
+    @field_validator("blocker_text")
+    @classmethod
+    def strip_blocker_text(cls, v: str) -> str:
+        return v.strip()
 
 
 class ConsultantWeeklyPulse(BaseModel):
@@ -43,6 +48,7 @@ class ConsultantWeeklyPulse(BaseModel):
     name: str
     workload: Scale5
     blocker: bool
+    blocker_text: str = ""
     call_needed: bool
     rag: RAGStatus = RAGStatus.GREEN
 
@@ -66,7 +72,12 @@ class RawMonthlyConsultantEntry(BaseModel):
     delivery: Scale5
     skill_alignment: Scale5
     task_challenge: Scale5
-    manager_needs: str = Field(default="", description="Free-text — personal data stripped before output")
+    manager_needs: str = Field(default="", description="Free-text — whitespace stripped at validation")
+
+    @field_validator("manager_needs")
+    @classmethod
+    def strip_manager_needs(cls, v: str) -> str:
+        return v.strip()
 
 
 class ConsultantMonthlyPulse(BaseModel):
@@ -80,6 +91,7 @@ class ConsultantMonthlyPulse(BaseModel):
     delivery: Scale5
     skill_alignment: Scale5
     task_challenge: Scale5
+    manager_needs: str = ""
     rag: RAGStatus = RAGStatus.GREEN
 
     @field_validator("id")
@@ -100,7 +112,12 @@ class RawLeadEntry(BaseModel):
     proactivity: Scale5
     skill_fit: Scale5
     project_status: Scale5
-    risks: str = Field(default="", description="Free-text — personal data stripped before output")
+    risks: str = Field(default="", description="Free-text — whitespace stripped at validation")
+
+    @field_validator("risks")
+    @classmethod
+    def strip_risks(cls, v: str) -> str:
+        return v.strip()
 
 
 class LeadMonthlyReport(BaseModel):
@@ -113,6 +130,7 @@ class LeadMonthlyReport(BaseModel):
     skill_fit: Scale5
     project_status: Scale5
     risks_present: bool = False
+    risks_text: str = ""
 
     @field_validator("id")
     @classmethod

@@ -1,12 +1,12 @@
 {
   "week": "2026-W16",
-  "generated_at": "2026-04-16T08:35:50.234425Z",
+  "generated_at": "2026-04-20T11:35:27.678243Z",
   "aggregated": {
-    "avg_workload": 3.35,
-    "active_blockers": 2,
+    "avg_workload": 3.18,
+    "active_blockers": 4,
     "calls_needed": 4,
-    "rag_red": 8,
-    "rag_amber": 4,
+    "rag_red": 6,
+    "rag_amber": 6,
     "rag_green": 5,
     "response_count": 17,
     "expected_count": 17
@@ -31,152 +31,171 @@
     "C17": "Quin Hoffmann"
   },
   "blockers": [
-    "C08",
-    "C05"
+    "C13",
+    "C11",
+    "C05",
+    "C17"
   ],
   "calls_requested": [
-    "C15",
-    "C13",
+    "C11",
+    "C08",
     "C07",
-    "C05"
+    "C04"
   ],
   "missing": [],
   "consultants": [
     {
       "id": "C01",
       "name": "Anna Becker",
-      "workload": 1,
+      "workload": 2,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "green"
     },
     {
       "id": "C10",
       "name": "Jan Wolf",
-      "workload": 1,
+      "workload": 3,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "green"
     },
     {
       "id": "C16",
       "name": "Peter Lange",
-      "workload": 3,
+      "workload": 4,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
-      "rag": "green"
+      "rag": "amber"
     },
     {
       "id": "C15",
       "name": "Olga Fuchs",
-      "workload": 4,
-      "blocker": false,
-      "call_needed": true,
-      "rag": "amber"
-    },
-    {
-      "id": "C14",
-      "name": "Nils Krause",
       "workload": 5,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "red"
     },
     {
+      "id": "C14",
+      "name": "Nils Krause",
+      "workload": 4,
+      "blocker": false,
+      "blocker_text": "",
+      "call_needed": false,
+      "rag": "amber"
+    },
+    {
       "id": "C13",
       "name": "Maria Hartmann",
-      "workload": 2,
-      "blocker": false,
-      "call_needed": true,
-      "rag": "amber"
+      "workload": 3,
+      "blocker": true,
+      "blocker_text": "Access to test rig blocked — waiting for IT ticket.",
+      "call_needed": false,
+      "rag": "red"
     },
     {
       "id": "C12",
       "name": "Lars Zimmermann",
       "workload": 5,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "red"
     },
     {
       "id": "C11",
       "name": "Karin Braun",
-      "workload": 5,
-      "blocker": false,
-      "call_needed": false,
+      "workload": 4,
+      "blocker": true,
+      "blocker_text": "CI pipeline broken on main since Monday.",
+      "call_needed": true,
       "rag": "red"
     },
     {
       "id": "C09",
       "name": "Iris Klein",
-      "workload": 4,
+      "workload": 2,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
-      "rag": "amber"
+      "rag": "green"
     },
     {
       "id": "C02",
       "name": "Ben Müller",
       "workload": 4,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "amber"
     },
     {
       "id": "C08",
       "name": "Hans Richter",
-      "workload": 1,
-      "blocker": true,
-      "call_needed": false,
-      "rag": "red"
+      "workload": 3,
+      "blocker": false,
+      "blocker_text": "",
+      "call_needed": true,
+      "rag": "amber"
     },
     {
       "id": "C07",
       "name": "Greta Koch",
-      "workload": 5,
+      "workload": 1,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": true,
-      "rag": "red"
+      "rag": "amber"
     },
     {
       "id": "C06",
       "name": "Felix Bauer",
-      "workload": 2,
+      "workload": 3,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
       "rag": "green"
     },
     {
       "id": "C05",
       "name": "Eva Schulz",
-      "workload": 2,
+      "workload": 3,
       "blocker": true,
-      "call_needed": true,
+      "blocker_text": "Waiting for safety approval from functional safety team.",
+      "call_needed": false,
       "rag": "red"
     },
     {
       "id": "C04",
       "name": "David Wagner",
-      "workload": 5,
+      "workload": 4,
       "blocker": false,
-      "call_needed": false,
-      "rag": "red"
+      "blocker_text": "",
+      "call_needed": true,
+      "rag": "amber"
     },
     {
       "id": "C03",
       "name": "Clara Fischer",
-      "workload": 5,
+      "workload": 2,
       "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
-      "rag": "red"
+      "rag": "green"
     },
     {
       "id": "C17",
       "name": "Quin Hoffmann",
-      "workload": 3,
-      "blocker": false,
+      "workload": 2,
+      "blocker": true,
+      "blocker_text": "Waiting for safety approval from functional safety team.",
       "call_needed": false,
-      "rag": "green"
+      "rag": "red"
     }
   ]
 }

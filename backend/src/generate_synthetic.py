@@ -1,6 +1,6 @@
 """Generates synthetic pulse_data.xlsx and consultant_map.yaml for development.
 
-Usage (from agents/consultant-pulse/):
+Usage (from projects/consultant-pulse/):
   python src/generate_synthetic.py
 
 Outputs:
@@ -34,13 +34,38 @@ CONSULTANTS: dict[str, str] = {
 _TS = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M")
 
 
+_BLOCKER_SAMPLES = [
+    "Access to test rig blocked — waiting for IT ticket.",
+    "Supplier has not delivered spec v2, can't continue integration.",
+    "CI pipeline broken on main since Monday.",
+    "Waiting for safety approval from functional safety team.",
+    "Customer portal credentials expired — request pending 4 days.",
+]
+
+_MANAGER_NEEDS_SAMPLES = [
+    "Need clarity on Q3 scope — feature list keeps changing.",
+    "Would like a 1:1 to discuss next project rotation.",
+    "Training budget for ISO 26262 refresher would help.",
+    "Escalation on tooling blockers takes too long.",
+    "",
+]
+
+_RISK_SAMPLES = [
+    "Deadline at risk due to supplier delay on module X.",
+    "Consultant overloaded on two parallel projects.",
+    "Customer escalated twice last week — needs executive attention.",
+    "Technical debt blocking feature delivery.",
+    "",
+]
+
+
 def _weekly_row(name: str) -> dict:
     blocker = random.random() < 0.2
     return {
         "Timestamp": _TS, "ConsultantName": name,
         "Workload": random.randint(1, 5),
         "BlockerYN": "Yes" if blocker else "No",
-        "BlockerText": "Toolchain access issue" if blocker else "",
+        "BlockerText": random.choice(_BLOCKER_SAMPLES) if blocker else "",
         "CallNeeded": "Yes" if random.random() < 0.15 else "No",
     }
 
@@ -51,7 +76,7 @@ def _monthly_consultant_row(name: str) -> dict:
         "Workload": random.randint(2, 5), "Engagement": random.randint(2, 5),
         "Motivation": random.randint(2, 5), "Delivery": random.randint(2, 5),
         "SkillAlignment": random.randint(1, 5), "TaskChallenge": random.randint(2, 5),
-        "ManagerNeeds": "",
+        "ManagerNeeds": random.choice(_MANAGER_NEEDS_SAMPLES),
     }
 
 
@@ -60,7 +85,7 @@ def _monthly_lead_row(name: str) -> dict:
         "Timestamp": _TS, "ConsultantName": name,
         "Reliability": random.randint(2, 5), "Proactivity": random.randint(2, 5),
         "SkillFit": random.randint(2, 5), "ProjectStatus": random.randint(2, 5),
-        "Risks": "",
+        "Risks": random.choice(_RISK_SAMPLES),
     }
 
 

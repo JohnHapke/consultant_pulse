@@ -24,6 +24,8 @@ export function MonthlyView({ data, prevData }) {
         missingLeads={data.missing_leads}
         isMonthly={true}
         ragChanges={ragChanges}
+        consultants={data.consultants}
+        leadReports={data.lead_reports}
       />
       <RAGGrid consultants={data.consultants} prevLookup={prevLookup} />
       <MonthlyScores aggregated={data.aggregated} prevAggregated={prevData?.aggregated} />

@@ -36,7 +36,7 @@ export function Header({ period, generatedAt, view, onViewChange }) {
 
         {/* View toggle */}
         <div className="flex border" style={{ borderColor: 'var(--border-bright)' }}>
-          {['weekly', 'monthly'].map(v => (
+          {['weekly', 'monthly', 'history'].map((v, i, arr) => (
             <button
               key={v}
               onClick={() => onViewChange(v)}
@@ -45,7 +45,7 @@ export function Header({ period, generatedAt, view, onViewChange }) {
                 letterSpacing: '0.12em',
                 background: view === v ? 'var(--bg-elevated)' : 'transparent',
                 color: view === v ? 'var(--text-primary)' : 'var(--text-muted)',
-                borderRight: v === 'weekly' ? '1px solid var(--border-bright)' : 'none',
+                borderRight: i < arr.length - 1 ? '1px solid var(--border-bright)' : 'none',
               }}
             >
               {v}

@@ -17,6 +17,7 @@ export function WeeklyView({ data, prevData }) {
         missingConsultants={data.missing}
         isMonthly={false}
         ragChanges={ragChanges}
+        consultants={data.consultants}
       />
       <RAGGrid consultants={data.consultants} prevLookup={prevLookup} />
       <WorkloadChart consultants={data.consultants} prevLookup={prevLookup} />

@@ -1,6 +1,6 @@
 """Aggregation pipeline: anonymize → compute RAG → aggregate → output models.
 
-CLI usage (run from agents/consultant-pulse/):
+CLI usage (run from projects/consultant-pulse/):
   python src/aggregator.py --excel data/synthetic/pulse_data.xlsx \\
     --consultant-map data/synthetic/consultant_map.yaml \\
     --rag-rules config/rag_rules.yaml \\
@@ -46,7 +46,9 @@ def _to_weekly_pulse(
         raise AggregatorError(str(e)) from e
     pulse = ConsultantWeeklyPulse(
         id=cid, name=id_name_map[cid],
-        workload=entry.workload, blocker=entry.blocker_yn, call_needed=entry.call_needed,
+        workload=entry.workload, blocker=entry.blocker_yn,
+        blocker_text=entry.blocker_text,
+        call_needed=entry.call_needed,
     )
     pulse.rag = compute_weekly_rag(pulse, rag_rules)
     return pulse
@@ -111,7 +113,8 @@ def _build_lead_index(
             proactivity=entry.proactivity,
             skill_fit=entry.skill_fit,
             project_status=entry.project_status,
-            risks_present=bool(entry.risks.strip()),
+            risks_present=bool(entry.risks),
+            risks_text=entry.risks,
         )
     return index
 
@@ -131,6 +134,7 @@ def _to_monthly_pulse(
         id=cid, name=id_name_map[cid], workload=entry.workload, engagement=entry.engagement,
         motivation=entry.motivation, delivery=entry.delivery,
         skill_alignment=entry.skill_alignment, task_challenge=entry.task_challenge,
+        manager_needs=entry.manager_needs,
     )
     pulse.rag = compute_monthly_rag(pulse, lead_index.get(cid), rag_rules)
     return pulse

@@ -15,18 +15,21 @@ from models import RawWeeklyEntry, RawMonthlyConsultantEntry, RawLeadEntry
 # ---------------------------------------------------------------------------
 
 def _raw_weekly(name: str = "Anna Becker", workload: int = 3,
-                blocker: bool = False, call: bool = False) -> RawWeeklyEntry:
+                blocker: bool = False, call: bool = False,
+                blocker_text: str = "") -> RawWeeklyEntry:
     return RawWeeklyEntry(
         consultant_name=name, workload=workload,
-        blocker_yn=blocker, blocker_text="", call_needed=call,
+        blocker_yn=blocker, blocker_text=blocker_text, call_needed=call,
     )
 
 
 def _raw_monthly_c(name: str = "Anna Becker", workload: int = 3,
-                   engagement: int = 4, motivation: int = 4) -> RawMonthlyConsultantEntry:
+                   engagement: int = 4, motivation: int = 4,
+                   manager_needs: str = "") -> RawMonthlyConsultantEntry:
     return RawMonthlyConsultantEntry(
         consultant_name=name, workload=workload, engagement=engagement,
         motivation=motivation, delivery=3, skill_alignment=4, task_challenge=3,
+        manager_needs=manager_needs,
     )
 
 
@@ -199,3 +202,49 @@ def test_build_monthly_output_rag_red_low_project_status(consultant_map, id_name
     l_entries = [_raw_lead("Anna Becker", project_status=1)]
     output = build_monthly_output(c_entries, l_entries, consultant_map, rag_rules, "2026-04", id_name_map)
     assert output.aggregated.rag_red == 1
+
+
+# ---------------------------------------------------------------------------
+# Free-text pass-through (V1.1)
+# ---------------------------------------------------------------------------
+
+def test_weekly_blocker_text_passes_through(consultant_map, id_name_map, rag_rules):
+    entries = [_raw_weekly("Anna Becker", blocker=True, blocker_text="  Access to test rig blocked  ")]
+    output = build_weekly_output(entries, consultant_map, rag_rules, "2026-W15", id_name_map)
+    assert output.consultants[0].blocker_text == "Access to test rig blocked"
+
+
+def test_weekly_blocker_text_empty_when_absent(consultant_map, id_name_map, rag_rules):
+    entries = [_raw_weekly("Anna Becker")]
+    output = build_weekly_output(entries, consultant_map, rag_rules, "2026-W15", id_name_map)
+    assert output.consultants[0].blocker_text == ""
+
+
+def test_monthly_manager_needs_passes_through(consultant_map, id_name_map, rag_rules):
+    c_entries = [_raw_monthly_c("Anna Becker", manager_needs="  Need clarity on Q3 targets  ")]
+    output = build_monthly_output(c_entries, [], consultant_map, rag_rules, "2026-04", id_name_map)
+    assert output.consultants[0].manager_needs == "Need clarity on Q3 targets"
+
+
+def test_monthly_lead_risks_text_passes_through(consultant_map, id_name_map, rag_rules):
+    c_entries = [_raw_monthly_c("Anna Becker")]
+    l_entries = [_raw_lead("Anna Becker", risks="  Deadline at risk due to supplier delay  ")]
+    output = build_monthly_output(c_entries, l_entries, consultant_map, rag_rules, "2026-04", id_name_map)
+    assert output.lead_reports[0].risks_text == "Deadline at risk due to supplier delay"
+    assert output.lead_reports[0].risks_present is True
+
+
+def test_monthly_lead_risks_text_empty_when_absent(consultant_map, id_name_map, rag_rules):
+    c_entries = [_raw_monthly_c("Anna Becker")]
+    l_entries = [_raw_lead("Anna Becker")]
+    output = build_monthly_output(c_entries, l_entries, consultant_map, rag_rules, "2026-04", id_name_map)
+    assert output.lead_reports[0].risks_text == ""
+    assert output.lead_reports[0].risks_present is False
+
+
+def test_monthly_lead_risks_text_whitespace_only(consultant_map, id_name_map, rag_rules):
+    c_entries = [_raw_monthly_c("Anna Becker")]
+    l_entries = [_raw_lead("Anna Becker", risks="   ")]
+    output = build_monthly_output(c_entries, l_entries, consultant_map, rag_rules, "2026-04", id_name_map)
+    assert output.lead_reports[0].risks_text == ""
+    assert output.lead_reports[0].risks_present is False

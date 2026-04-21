@@ -1,13 +1,13 @@
 {
-  "week": "2026-W12",
-  "generated_at": "2026-04-20T11:35:34.529475Z",
+  "week": "2026-W17",
+  "generated_at": "2026-04-20T11:35:25.825992Z",
   "aggregated": {
-    "avg_workload": 3.65,
-    "active_blockers": 4,
-    "calls_needed": 2,
-    "rag_red": 8,
-    "rag_amber": 8,
-    "rag_green": 1,
+    "avg_workload": 2.65,
+    "active_blockers": 3,
+    "calls_needed": 4,
+    "rag_red": 5,
+    "rag_amber": 3,
+    "rag_green": 9,
     "response_count": 17,
     "expected_count": 17
   },
@@ -31,30 +31,31 @@
     "C17": "Quin Hoffmann"
   },
   "blockers": [
-    "C14",
-    "C06",
-    "C04",
-    "C17"
+    "C13",
+    "C12",
+    "C05"
   ],
   "calls_requested": [
     "C10",
-    "C11"
+    "C15",
+    "C11",
+    "C02"
   ],
   "missing": [],
   "consultants": [
     {
       "id": "C01",
       "name": "Anna Becker",
-      "workload": 5,
+      "workload": 2,
       "blocker": false,
       "blocker_text": "",
       "call_needed": false,
-      "rag": "red"
+      "rag": "green"
     },
     {
       "id": "C10",
       "name": "Jan Wolf",
-      "workload": 2,
+      "workload": 1,
       "blocker": false,
       "blocker_text": "",
       "call_needed": true,
@@ -63,88 +64,88 @@
     {
       "id": "C16",
       "name": "Peter Lange",
-      "workload": 4,
+      "workload": 3,
       "blocker": false,
       "blocker_text": "",
       "call_needed": false,
-      "rag": "amber"
+      "rag": "green"
     },
     {
       "id": "C15",
       "name": "Olga Fuchs",
-      "workload": 5,
-      "blocker": false,
-      "blocker_text": "",
-      "call_needed": false,
-      "rag": "red"
-    },
-    {
-      "id": "C14",
-      "name": "Nils Krause",
       "workload": 3,
-      "blocker": true,
-      "blocker_text": "Customer portal credentials expired — request pending 4 days.",
-      "call_needed": false,
-      "rag": "red"
-    },
-    {
-      "id": "C13",
-      "name": "Maria Hartmann",
-      "workload": 4,
-      "blocker": false,
-      "blocker_text": "",
-      "call_needed": false,
-      "rag": "amber"
-    },
-    {
-      "id": "C12",
-      "name": "Lars Zimmermann",
-      "workload": 4,
-      "blocker": false,
-      "blocker_text": "",
-      "call_needed": false,
-      "rag": "amber"
-    },
-    {
-      "id": "C11",
-      "name": "Karin Braun",
-      "workload": 4,
       "blocker": false,
       "blocker_text": "",
       "call_needed": true,
       "rag": "amber"
     },
     {
-      "id": "C09",
-      "name": "Iris Klein",
-      "workload": 5,
+      "id": "C14",
+      "name": "Nils Krause",
+      "workload": 1,
       "blocker": false,
       "blocker_text": "",
       "call_needed": false,
+      "rag": "green"
+    },
+    {
+      "id": "C13",
+      "name": "Maria Hartmann",
+      "workload": 4,
+      "blocker": true,
+      "blocker_text": "Customer portal credentials expired — request pending 4 days.",
+      "call_needed": false,
       "rag": "red"
+    },
+    {
+      "id": "C12",
+      "name": "Lars Zimmermann",
+      "workload": 4,
+      "blocker": true,
+      "blocker_text": "Waiting for safety approval from functional safety team.",
+      "call_needed": false,
+      "rag": "red"
+    },
+    {
+      "id": "C11",
+      "name": "Karin Braun",
+      "workload": 5,
+      "blocker": false,
+      "blocker_text": "",
+      "call_needed": true,
+      "rag": "red"
+    },
+    {
+      "id": "C09",
+      "name": "Iris Klein",
+      "workload": 2,
+      "blocker": false,
+      "blocker_text": "",
+      "call_needed": false,
+      "rag": "green"
     },
     {
       "id": "C02",
       "name": "Ben Müller",
-      "workload": 4,
+      "workload": 5,
       "blocker": false,
       "blocker_text": "",
-      "call_needed": false,
-      "rag": "amber"
+      "call_needed": true,
+      "rag": "red"
     },
     {
       "id": "C08",
       "name": "Hans Richter",
-      "workload": 5,
+      "workload": 1,
       "blocker": false,
       "blocker_text": "",
       "call_needed": false,
-      "rag": "red"
+      "rag": "green"
     },
     {
       "id": "C07",
       "name": "Greta Koch",
-      "workload": 1,
+      "workload": 3,
       "blocker": false,
       "blocker_text": "",
       "call_needed": false,
@@ -154,32 +155,23 @@
       "id": "C06",
       "name": "Felix Bauer",
       "workload": 2,
-      "blocker": true,
-      "blocker_text": "CI pipeline broken on main since Monday.",
+      "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
-      "rag": "red"
+      "rag": "green"
     },
     {
       "id": "C05",
       "name": "Eva Schulz",
-      "workload": 4,
-      "blocker": false,
-      "blocker_text": "",
-      "call_needed": false,
-      "rag": "amber"
-    },
-    {
-      "id": "C04",
-      "name": "David Wagner",
-      "workload": 3,
+      "workload": 2,
       "blocker": true,
       "blocker_text": "Waiting for safety approval from functional safety team.",
       "call_needed": false,
       "rag": "red"
     },
     {
-      "id": "C03",
-      "name": "Clara Fischer",
+      "id": "C04",
+      "name": "David Wagner",
       "workload": 4,
       "blocker": false,
       "blocker_text": "",
@@ -187,13 +179,22 @@
       "rag": "amber"
     },
     {
+      "id": "C03",
+      "name": "Clara Fischer",
+      "workload": 2,
+      "blocker": false,
+      "blocker_text": "",
+      "call_needed": false,
+      "rag": "green"
+    },
+    {
       "id": "C17",
       "name": "Quin Hoffmann",
-      "workload": 3,
-      "blocker": true,
-      "blocker_text": "Customer portal credentials expired — request pending 4 days.",
+      "workload": 1,
+      "blocker": false,
+      "blocker_text": "",
       "call_needed": false,
-      "rag": "red"
+      "rag": "green"
     }
   ]
 }

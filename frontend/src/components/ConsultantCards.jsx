@@ -153,6 +153,18 @@ function ConsultantCard({ consultant, prevConsultant }) {
                   delta={prevConsultant ? scoreDelta(consultant[f.key], prevConsultant[f.key]) : null} />
               ))}
             </div>
+            {consultant.manager_needs && (
+              <div className="mt-3">
+                <div className="font-condensed text-xs uppercase tracking-wider mb-1"
+                  style={{ color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
+                  Needs from manager
+                </div>
+                <p className="font-sans text-sm italic leading-snug"
+                  style={{ color: 'var(--text-secondary)' }}>
+                  "{consultant.manager_needs}"
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="pt-4">
@@ -167,10 +179,24 @@ function ConsultantCard({ consultant, prevConsultant }) {
                     delta={prevConsultant?.lead ? scoreDelta(lead[f.key], prevConsultant.lead[f.key]) : null} />
                 ))}
                 {lead.risks_present && (
-                  <div className="mt-2 px-3 py-2 font-sans text-xs"
-                    style={{ background: 'var(--rag-red-bg)', color: 'var(--rag-red)',
+                  <div className="mt-2 px-3 py-2"
+                    style={{ background: 'var(--rag-red-bg)',
                       border: '1px solid var(--rag-red-border)' }}>
-                    Project lead reported active risks
+                    <div className="font-condensed text-xs uppercase tracking-wider mb-1"
+                      style={{ color: 'var(--rag-red)', letterSpacing: '0.1em', fontWeight: 600 }}>
+                      Active risks
+                    </div>
+                    {lead.risks_text ? (
+                      <p className="font-sans text-sm italic leading-snug"
+                        style={{ color: 'var(--text-primary)' }}>
+                        "{lead.risks_text}"
+                      </p>
+                    ) : (
+                      <p className="font-sans text-xs"
+                        style={{ color: 'var(--rag-red)' }}>
+                        Project lead flagged risks (no details provided)
+                      </p>
+                    )}
                   </div>
                 )}
               </div>

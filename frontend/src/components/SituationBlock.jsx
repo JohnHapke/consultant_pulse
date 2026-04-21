@@ -3,20 +3,40 @@
  * Plain language, no jargon. Action items only appear when there's something to do.
  */
 
+import { useMemo } from 'react'
+
 const LEVEL_STYLES = {
   red:   { color: 'var(--rag-red)',   border: 'var(--rag-red-border)',   bg: 'var(--rag-red-bg)'   },
   amber: { color: 'var(--rag-amber)', border: 'var(--rag-amber-border)', bg: 'var(--rag-amber-bg)' },
 }
 
-function ActionItem({ level, text, ids }) {
+function ActionItem({ level, text, ids, details }) {
   const s = LEVEL_STYLES[level]
   return (
     <div className="flex items-start gap-3 py-2 border-b last:border-b-0"
       style={{ borderColor: 'var(--border)' }}>
       <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: s.color }} />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <span className="font-sans text-sm" style={{ color: 'var(--text-primary)' }}>{text}</span>
-        {ids.length > 0 && (
+        {details && details.length > 0 && (
+          <div className="flex flex-col gap-1.5 mt-2">
+            {details.map(d => (
+              <div key={d.name} className="flex items-start gap-2 flex-wrap">
+                <span className="font-sans text-xs px-1.5 py-0.5 border flex-shrink-0"
+                  style={{ color: s.color, borderColor: s.border, background: s.bg }}>
+                  {d.name}
+                </span>
+                {d.text && (
+                  <span className="font-sans text-xs italic leading-snug"
+                    style={{ color: 'var(--text-secondary)' }}>
+                    "{d.text}"
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+        {!details && ids && ids.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-1">
             {ids.map(label => (
               <span key={label} className="font-sans text-xs px-1.5 py-0.5 border"
@@ -70,9 +90,20 @@ export function SituationBlock({
   missingLeads = [],
   isMonthly = false,
   ragChanges = null,
+  consultants = [],
+  leadReports = [],
 }) {
   const resolve = (ids) => ids.map(id => nameMap[id] ?? id)
   const n = aggregated.expected_count
+
+  const blockerTextById = useMemo(
+    () => Object.fromEntries(consultants.filter(c => c.blocker).map(c => [c.id, c.blocker_text ?? ''])),
+    [consultants],
+  )
+  const risksTextById = useMemo(
+    () => Object.fromEntries(leadReports.filter(l => l.risks_present).map(l => [l.id, l.risks_text ?? ''])),
+    [leadReports],
+  )
 
   const actions = [
     aggregated.rag_red > 0 && {
@@ -83,7 +114,7 @@ export function SituationBlock({
     blockers.length > 0 && {
       level: 'red',
       text: `${blockers.length} active blocker${blockers.length > 1 ? 's' : ''}`,
-      ids: resolve(blockers),
+      details: blockers.map(id => ({ name: nameMap[id] ?? id, text: blockerTextById[id] ?? '' })),
     },
     callsRequested.length > 0 && {
       level: 'amber',
@@ -93,7 +124,7 @@ export function SituationBlock({
     risks.length > 0 && {
       level: 'amber',
       text: `${risks.length} project risk${risks.length > 1 ? 's' : ''} reported by project leads`,
-      ids: resolve(risks),
+      details: risks.map(id => ({ name: nameMap[id] ?? id, text: risksTextById[id] ?? '' })),
     },
     missingConsultants.length > 0 && {
       level: 'amber',

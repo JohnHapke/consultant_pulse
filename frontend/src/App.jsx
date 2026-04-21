@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Header } from './components/Header'
 import { WeeklyView } from './components/WeeklyView'
 import { MonthlyView } from './components/MonthlyView'
+import { HistoryView } from './components/HistoryView'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { usePulseData } from './hooks/usePulseData'
 import { useIndex } from './hooks/useIndex'
@@ -40,24 +41,27 @@ export default function App() {
   const [view, setView] = useState('weekly')
   const { index, loading: indexLoading, error: indexError } = useIndex()
 
+  const isHistory = view === 'history'
   const files = index
-    ? (view === 'weekly' ? index.weekly : index.monthly) ?? []
+    ? (view === 'monthly' ? index.monthly : index.weekly) ?? []
     : []
-  const file = files[0] ?? null
-  const prevFile = files[1] ?? null
+  const file = isHistory ? null : files[0] ?? null
+  const prevFile = isHistory ? null : files[1] ?? null
 
   const { data, loading, error } = usePulseData(file)
   const { data: prevData } = usePulseData(prevFile)
 
-  const period = data ? (data.week ?? data.month) : '—'
-  const isLoading = indexLoading || loading
-  const loadError = indexError ?? error
+  const period = isHistory
+    ? 'History'
+    : data ? (data.week ?? data.month) : '—'
+  const isLoading = indexLoading || (!isHistory && loading)
+  const loadError = indexError ?? (isHistory ? null : error)
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-base)' }}>
       <Header
         period={period}
-        generatedAt={data?.generated_at}
+        generatedAt={isHistory ? null : data?.generated_at}
         view={view}
         onViewChange={setView}
       />
@@ -65,7 +69,12 @@ export default function App() {
       <main className="flex-1">
         {isLoading && <LoadingState />}
         {!isLoading && loadError && <ErrorState message={loadError} />}
-        {!isLoading && !loadError && data && (
+        {!isLoading && !loadError && isHistory && (
+          <ErrorBoundary key={view}>
+            <HistoryView index={index} />
+          </ErrorBoundary>
+        )}
+        {!isLoading && !loadError && !isHistory && data && (
           <ErrorBoundary key={view}>
             {view === 'weekly'
               ? <WeeklyView data={data} prevData={prevData} />
