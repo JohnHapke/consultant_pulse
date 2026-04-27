@@ -1,4 +1,4 @@
-# consultant-pulse
+# Consultant Pulse
 
 > Weekly and monthly pulse dashboard for distributed consultant teams — anonymized, RAG-coded, trend-aware.
 
@@ -88,11 +88,25 @@ consultant-pulse/
 
 ## Quick Start (synthetic data)
 
+### Windows (WSL or Git Bash)
+
 ```bash
-# 1. Backend
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+### Linux
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Then generate data and start the dashboard:
+
+```bash
 
 # 2. Generate data for two periods (enables trend comparison)
 python backend/src/aggregator.py \
