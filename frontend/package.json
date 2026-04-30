@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "serve": "vite build && npx serve dist",
-    "serve-dist": "npx serve dist",
+    "serve": "vite build && npx serve dist --listen localhost",
+    "serve-dist": "npx serve dist --listen localhost",
     "use-synthetic": "cp -r ../data/synthetic/output/. public/data/"
   },
   "dependencies": {
