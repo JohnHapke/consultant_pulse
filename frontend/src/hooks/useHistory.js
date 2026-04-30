@@ -23,7 +23,7 @@ export function useHistory(files, view) {
 
     Promise.all(
       files.map(f =>
-        fetch(`/data/${f}`).then(r => {
+        fetch(`${import.meta.env.BASE_URL}data/${f}`).then(r => {
           if (!r.ok) throw new Error(`${f} not found (HTTP ${r.status})`)
           return r.json()
         })

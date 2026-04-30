@@ -5,6 +5,18 @@ Format: [Semantic Versioning](https://semver.org/) — `MAJOR.MINOR.PATCH`
 
 ---
 
+## [1.2.1] - 2026-04-30
+
+### Fixed
+- `--text-muted` raised from `#3E3E48` to `#606070` — section labels (RAG STATUS, WORKLOAD etc.) now readable on dark background (WCAG AA compliant for large/bold text)
+- Data fetch paths use `import.meta.env.BASE_URL` in all three hooks — dashboard works on SharePoint subfolders without path resolution errors
+
+### Changed
+- `scripts/publish.sh` accepts `--base <path>` flag for SharePoint deployment
+- `docs/sharing.md` extended with SharePoint deployment guide (Option B) including security notes
+
+---
+
 ## [1.2.0] - 2026-04-30
 
 ### Added

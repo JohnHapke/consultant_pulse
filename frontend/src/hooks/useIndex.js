@@ -10,7 +10,7 @@ export function useIndex() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('/data/index.json')
+    fetch(`${import.meta.env.BASE_URL}data/index.json`)
       .then(r => {
         if (!r.ok) throw new Error(`index.json not found (HTTP ${r.status})`)
         return r.json()

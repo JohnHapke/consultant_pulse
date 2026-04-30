@@ -9,7 +9,7 @@ export function usePulseData(file) {
     if (!file) { setLoading(false); setData(null); return }
     setLoading(true)
     setError(null)
-    fetch(`/data/${file}`)
+    fetch(`${import.meta.env.BASE_URL}data/${file}`)
       .then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()

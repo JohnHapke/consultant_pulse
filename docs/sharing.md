@@ -7,7 +7,7 @@ they need a static build served over HTTP — not a Vite dev server.
 
 This document describes how to:
 1. Build the dashboard to a configurable output directory
-2. Serve it locally with `npx serve`
+2. Serve it locally with `npx serve` or deploy it to SharePoint
 3. Keep development data separate from real data
 
 ---
@@ -22,7 +22,7 @@ This document describes how to:
 | `data/synthetic/output/` | Synthetic periods for dev/testing | Yes |
 | `data/output/` | Real aggregator output (intermediate) | No (gitignored) |
 
-This means `git pull` will never overwrite your local data files.
+`git pull` will never overwrite your local data files.
 
 ---
 
@@ -39,7 +39,7 @@ cd frontend && npm run dev
 
 ---
 
-## Sharing with a colleague
+## Option A — Local sharing via npx serve
 
 ### Step 1 — Build the dashboard
 
@@ -48,11 +48,7 @@ cd frontend && npm run dev
 bash scripts/publish.sh --output-dir ./dashboard_output
 ```
 
-This builds the React app to `./dashboard_output/`.
-
 ### Step 2 — Inject data
-
-Run the aggregator once per period, pointing output at the dashboard's data folder:
 
 ```bash
 python backend/src/aggregator.py \
@@ -62,8 +58,7 @@ python backend/src/aggregator.py \
   --output ./dashboard_output/data
 ```
 
-Repeat with `--week` or `--month` for each period you want to include.
-`writer.py` updates `index.json` automatically after each run.
+Repeat for each period. `writer.py` updates `index.json` automatically.
 
 ### Step 3 — Serve
 
@@ -72,35 +67,80 @@ npx serve ./dashboard_output
 # → http://localhost:3000
 ```
 
-The colleague opens the URL in their browser. No Node.js or Python required on their end —
-they only need a browser (or you share the IP/port over the local network).
+> **Note:** `npx serve` listens on all network interfaces (0.0.0.0).
+> Only use on trusted networks. Add `--listen localhost` to restrict to local-only access.
 
 ---
 
-## Serving an already-built dist/
+## Option B — SharePoint (recommended for company use)
 
-If you have already run `npm run build` and want to serve without rebuilding:
+SharePoint serves static files within the M365 tenant. Access is controlled by Entra ID —
+no external exposure, no open ports, no self-managed server.
+
+### Security
+- Data stays within the company M365 tenant
+- Access via M365 permissions (invite specific colleagues, not "everyone in tenant")
+- Microsoft manages HTTPS, audit logs, and encryption
+- Even with anonymized IDs, restrict access to people who operationally need the data (DSGVO)
+
+### Step 1 — Find the SharePoint subfolder path
+
+Upload the dashboard to a document library subfolder, e.g.:
+`https://company.sharepoint.com/sites/TeamName/Shared Documents/dashboard/`
+
+The `--base` path is the server-relative path to that folder:
+`/sites/TeamName/Shared%20Documents/dashboard/`
+
+### Step 2 — Build with the correct base path
+
+```bash
+bash scripts/publish.sh \
+  --output-dir ./dashboard_output \
+  --base "/sites/TeamName/Shared%20Documents/dashboard/"
+```
+
+### Step 3 — Inject data
+
+```bash
+python backend/src/aggregator.py \
+  --excel /path/to/data.xlsx \
+  --consultant-map /path/to/consultant_map.yaml \
+  --week 2026-W18 \
+  --output ./dashboard_output/data
+```
+
+### Step 4 — Upload to SharePoint
+
+Copy all files from `./dashboard_output/` into the SharePoint folder
+(`index.html`, `assets/`, `data/`, `favicon.svg`, `icons.svg`).
+
+Colleagues open the SharePoint URL directly in their browser — no local setup required.
+
+---
+
+## Serving an existing dist/ without rebuilding
 
 ```bash
 cd frontend && npm run serve-dist
-# equivalent to: npx serve dist
+# equivalent to: npx serve dist --listen localhost
 ```
 
 ---
 
-## Default build (no custom output dir)
+## Default build (local dist/)
 
 ```bash
 cd frontend && npm run serve
-# builds to dist/ and serves via npx serve
+# builds to dist/ + serves via npx serve (localhost only)
 ```
 
 ---
 
-## serve vs. publish.sh
+## Command reference
 
-| Command | Output dir | Rebuilds |
-|---|---|---|
-| `npm run serve` | `frontend/dist/` | Yes |
-| `npm run serve-dist` | `frontend/dist/` | No |
-| `scripts/publish.sh --output-dir <dir>` | `<dir>` | Yes |
+| Command | Output dir | Base path | Rebuilds |
+|---|---|---|---|
+| `npm run serve` | `frontend/dist/` | `/` | Yes |
+| `npm run serve-dist` | `frontend/dist/` | `/` | No |
+| `scripts/publish.sh --output-dir <dir>` | `<dir>` | `/` | Yes |
+| `scripts/publish.sh --output-dir <dir> --base <path>` | `<dir>` | `<path>` | Yes |
