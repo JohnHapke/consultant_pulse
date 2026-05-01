@@ -17,8 +17,8 @@ class RAGStatus(str, Enum):
 
 
 def _validate_consultant_id(v: str) -> str:
-    if not (v.startswith("C") and v[1:].isdigit() and 1 <= int(v[1:]) <= 17):
-        raise ValueError(f"Invalid consultant ID: {v!r} — expected C01..C17")
+    if not (v.startswith("C") and len(v) >= 2 and v[1:].isdigit()):
+        raise ValueError(f"Invalid consultant ID: {v!r} — expected format C01..C17")
     return v
 
 

@@ -4,6 +4,7 @@
  */
 
 import { useMemo } from 'react'
+import { RAG_COLORS } from '../utils/rag'
 
 const LEVEL_STYLES = {
   red:   { color: 'var(--rag-red)',   border: 'var(--rag-red-border)',   bg: 'var(--rag-red-bg)'   },
@@ -64,12 +65,12 @@ function TrendLine({ ragChanges, isMonthly }) {
   return (
     <div className="flex items-center gap-3 mt-2">
       {worsened > 0 && (
-        <span className="font-condensed text-xs" style={{ color: '#E53E3E' }}>
+        <span className="font-condensed text-xs" style={{ color: RAG_COLORS.red.text }}>
           ↓ {worsened} worsened
         </span>
       )}
       {improved > 0 && (
-        <span className="font-condensed text-xs" style={{ color: '#16A34A' }}>
+        <span className="font-condensed text-xs" style={{ color: RAG_COLORS.green.text }}>
           ↑ {improved} improved
         </span>
       )}

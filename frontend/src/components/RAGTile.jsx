@@ -1,9 +1,9 @@
-import { ragColors } from '../utils/rag'
+import { ragColors, RAG_COLORS } from '../utils/rag'
 import { ragTrend } from '../utils/delta'
 
 const TREND_ARROW = {
-  worsened: { symbol: '↓', color: '#E53E3E' },
-  improved:  { symbol: '↑', color: '#16A34A' },
+  worsened: { symbol: '↓', color: RAG_COLORS.red.text },
+  improved:  { symbol: '↑', color: RAG_COLORS.green.text },
 }
 
 export function RAGTile({ consultant, index, prevRag }) {

@@ -2,6 +2,8 @@
  * Delta utilities for trend comparison between periods.
  */
 
+import { RAG_COLORS } from './rag'
+
 const RAG_ORDER = { red: 0, amber: 1, green: 2 }
 
 /** Build id → item lookup from array of {id, ...} objects. */
@@ -34,9 +36,9 @@ export function fmtDelta(delta) {
  * inverted=true means higher is worse (workload).
  */
 export function deltaColor(delta, inverted = false) {
-  if (delta === null || delta === undefined || delta === 0) return '#3E3E48'
+  if (delta === null || delta === undefined || delta === 0) return 'var(--text-muted)'
   const better = inverted ? delta < 0 : delta > 0
-  return better ? '#16A34A' : '#E53E3E'
+  return better ? RAG_COLORS.green.text : RAG_COLORS.red.text
 }
 
 /** Count RAG status changes across consultants vs. previous period. */

@@ -14,12 +14,9 @@ Format:
 All of name, email, and aliases are registered as lookup keys for the same ID.
 """
 
-import sys
 from pathlib import Path
 
 import yaml
-
-sys.path.insert(0, str(Path(__file__).parent))
 
 
 class MapperError(Exception):

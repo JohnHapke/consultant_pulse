@@ -5,6 +5,21 @@ Format: [Semantic Versioning](https://semver.org/) — `MAJOR.MINOR.PATCH`
 
 ---
 
+## [1.2.2] - 2026-05-01
+
+### Fixed
+- Removed `sys.path.insert` from pure modules (`loader.py`, `mapper.py`, `rag.py`, `writer.py`) — path hack confined to CLI entry points only
+- Removed hardcoded team-size bound (`<= 17`) from `_validate_consultant_id` — format-only check; ID range is enforced by `consultant_map.yaml`
+- Added explicit format validation in `_filter_by_week` — raises `LoaderError` on malformed week string instead of silently returning empty results
+- Replaced hardcoded hex colors (`#E53E3E`, `#16A34A`) in `RAGTile`, `ConsultantCards`, `SituationBlock`, `delta.js` with `RAG_COLORS` from `rag.js`
+- `deltaColor` neutral case uses `var(--text-muted)` instead of hardcoded `#3E3E48`
+- History view label now shows actual period count (`{n} weeks / {n} months`) instead of hardcoded "last 8 weeks / last 6 months"
+
+### Changed
+- `CLAUDE.md` anonymization rule clarified: names appear as display fields in JSON output, but never as lookup keys or aggregation identifiers
+
+---
+
 ## [1.2.1] - 2026-04-30
 
 ### Fixed

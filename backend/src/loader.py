@@ -8,12 +8,11 @@ function filters by period (week or month) and keeps the latest submission
 per consultant to handle resubmissions.
 """
 
-import sys
+import re
 from pathlib import Path
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).parent))
 from models import RawWeeklyEntry, RawMonthlyConsultantEntry, RawLeadEntry
 
 
@@ -47,6 +46,8 @@ def _filter_by_week(df: pd.DataFrame, ts_col: str, week: str) -> pd.DataFrame:
 
     dayfirst=True matches the DD/MM/YYYY HH:MM format written by Microsoft Forms.
     """
+    if not re.fullmatch(r"\d{4}-W\d{2}", week):
+        raise LoaderError(f"Invalid week format: {week!r} — expected YYYY-WNN (e.g. 2026-W15)")
     year, week_num = int(week[:4]), int(week[6:])
     ts = pd.to_datetime(df[ts_col], dayfirst=True, errors="coerce")
     iso = ts.dt.isocalendar()

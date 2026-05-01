@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ragColors, scoreColor } from '../utils/rag'
+import { ragColors, scoreColor, RAG_COLORS } from '../utils/rag'
 import { ragTrend, scoreDelta, fmtDelta, deltaColor } from '../utils/delta'
 
 const SELF_FIELDS = [
@@ -59,8 +59,8 @@ function StatusPill({ rag }) {
 }
 
 const TREND_BADGE = {
-  worsened: { symbol: '↓', color: '#E53E3E', label: 'worsened' },
-  improved:  { symbol: '↑', color: '#16A34A', label: 'improved' },
+  worsened: { symbol: '↓', color: RAG_COLORS.red.text,   label: 'worsened' },
+  improved:  { symbol: '↑', color: RAG_COLORS.green.text, label: 'improved' },
 }
 
 function ConsultantCard({ consultant, prevConsultant }) {

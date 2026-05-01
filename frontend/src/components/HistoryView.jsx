@@ -118,7 +118,7 @@ function AggregatedRow({ periods, view }) {
     <div className="mb-6 p-4 border" style={{ borderColor: 'var(--border)', background: 'var(--bg-surface)' }}>
       <div className="font-condensed text-xs uppercase tracking-widest mb-3"
         style={{ color: 'var(--text-muted)', letterSpacing: '0.2em' }}>
-        Team health over time — {view === 'weekly' ? 'last 8 weeks' : 'last 6 months'}
+        Team health over time — {periods.length} {view === 'weekly' ? 'weeks' : 'months'}
       </div>
       <div className="flex gap-1 h-12">
         {counts.map((c, i) => {
