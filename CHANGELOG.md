@@ -5,6 +5,19 @@ Format: [Semantic Versioning](https://semver.org/) — `MAJOR.MINOR.PATCH`
 
 ---
 
+## [1.2.3] - 2026-08-31
+
+### Added
+- `docs/ops-dashboard.md` — operator runbook: setting the dashboard up on a new machine and refreshing it with real data after each collection period
+- `docs/setup-forms-powerautomate.md` — runbook for the Microsoft Forms + Power Automate input layer (flows 1–4, configured and operational)
+
+Both moved here from the `my_ai_os` meta-repo, where they had been stored since
+2026-04-20. They document this project's own input layer and deployment, so they
+belong with the project rather than in the shared workspace. Content is unchanged
+by the move — including the fact that both are written in German, which does not
+match the English-only rule for committed files. Translating them is a separate
+decision, not something to bury inside a file move.
+
 ## [1.2.2] - 2026-05-01
 
 ### Fixed
